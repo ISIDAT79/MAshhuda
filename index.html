@@ -1,4 +1,3 @@
-
 <html>
 <head>
   <meta charset="UTF-8">
@@ -48,6 +47,29 @@
       100% {
         opacity: 0;
         transform: translateY(-20px);
+      }
+    }
+
+    /* Love Animation */
+    .love {
+      position: absolute;
+      font-size: 2rem;
+      font-weight: bold;
+      color: rgba(255, 105, 180, 0.8);
+      animation: bounce 1s infinite ease-in-out; /* Faster animation */
+    }
+    @keyframes bounce {
+      0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-20px);
       }
     }
 
@@ -113,6 +135,22 @@
       }, 1500);
     }
 
+    // Function to create "Love" text animations
+    function createLove() {
+      const container = document.getElementById('sorryContainer');
+      const love = document.createElement('div');
+      love.className = 'love';
+      love.textContent = 'Love';
+      love.style.left = `${Math.random() * 90}vw`; // Random horizontal position
+      love.style.top = `${Math.random() * 90}vh`; // Random vertical position
+      container.appendChild(love);
+
+      // Remove the "Love" after its animation ends
+      setTimeout(() => {
+        love.remove();
+      }, 1000); // Shorter timeout for faster disappearance
+    }
+
     // Function to create floating hearts
     function createHeart() {
       const heart = document.createElement('div');
@@ -127,8 +165,9 @@
       }, 3000);
     }
 
-    // Create "Sorry" text and hearts continuously
+    // Create "Sorry" text, "Love" text, and hearts continuously
     setInterval(createSorry, 200); // New "Sorry" every 200ms
+    setInterval(createLove, 200); // New "Love" every 200ms (faster frequency)
     setInterval(createHeart, 150); // New heart every 150ms
   </script>
 </body>
