@@ -1,174 +1,133 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sorry Mashhuda</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: 'Arial', sans-serif;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      height: 100vh;
-    }
-    h1 {
-      font-size: 2rem;
-      color: #fff;
-      margin-bottom: 1rem;
-      text-align: center;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    }
-    .sorry-container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-    .sorry {
-      position: absolute;
-      font-size: 2rem;
-      font-weight: bold;
-      color: rgba(255, 0, 0, 0.8);
-      animation: fade 1.5s infinite ease-in-out;
-    }
-    @keyframes fade {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      50% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      100% {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-    }
-
-    /* Love Animation */
-    .love {
-      position: absolute;
-      font-size: 2rem;
-      font-weight: bold;
-      color: rgba(255, 105, 180, 0.8);
-      animation: bounce 1s infinite ease-in-out; /* Faster animation */
-    }
-    @keyframes bounce {
-      0% {
-        opacity: 0;
-        transform: scale(0.8) translateY(20px);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-      }
-      100% {
-        opacity: 0;
-        transform: scale(0.8) translateY(-20px);
-      }
-    }
-
-    /* Heart Animation */
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: #ff6b6b;
-      transform: rotate(45deg);
-      animation: float 3s infinite ease-in-out;
-    }
-    .heart::before,
-    .heart::after {
-      content: '';
-      width: 20px;
-      height: 20px;
-      background: #ff6b6b;
-      border-radius: 50%;
-      position: absolute;
-    }
-    .heart::before {
-      top: -10px;
-      left: 0;
-    }
-    .heart::after {
-      left: 10px;
-      top: 0;
-    }
-    @keyframes float {
-      0% {
-        transform: translateY(0) rotate(45deg);
-        opacity: 1;
-      }
-      50% {
-        opacity: 0.7;
-      }
-      100% {
-        transform: translateY(-100vh) rotate(45deg);
-        opacity: 0;
-      }
-    }
-  </style>
+    <title>Index Page</title>
+    <style>
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+    </style>
 </head>
 <body>
-  <h1>I'm Sorry, Mashhuda</h1>
-  <div class="sorry-container" id="sorryContainer"></div>
+    <h2>Q13</h2>
+    <pre>
+***Page1.php***
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Form Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Enter Your Details&lt;/h2&gt;
+    &lt;form action="page2.php" method="POST"&gt;
+        Name: &lt;input type="text" name="name"&gt;&lt;br&gt;&lt;br&gt;
+        Email: &lt;input type="email" name="email"&gt;&lt;br&gt;&lt;br&gt;
+        &lt;button type="submit"&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
-  <script>
-    // Function to create "Sorry" text animations
-    function createSorry() {
-      const container = document.getElementById('sorryContainer');
-      const sorry = document.createElement('div');
-      sorry.className = 'sorry';
-      sorry.textContent = 'Sorry';
-      sorry.style.left = `${Math.random() * 90}vw`; // Random horizontal position
-      sorry.style.top = `${Math.random() * 90}vh`; // Random vertical position
-      container.appendChild(sorry);
+***Page2.php***
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Display Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Your Submitted Details&lt;/h2&gt;
+    &lt;?php
+    echo "Name: " . $_POST['name'] . "&lt;br&gt;";
+    echo "Email: " . $_POST['email'] . "&lt;br&gt;";
+    ?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+    </pre>
 
-      // Remove the "Sorry" after its animation ends
-      setTimeout(() => {
-        sorry.remove();
-      }, 1500);
-    }
+    <h2>Q15</h2>
+    <pre>
+&lt;?php
+$conn = mysqli_connect("localhost", "root", "", "company_db");
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+$id = 1;
+$name = "John Doe";
+$salary = 50000;
+$department = "IT";
+$sql = "INSERT INTO emp_master (id, name, salary, department) VALUES ('$id', '$name', '$salary', '$department')";
+if (mysqli_query($conn, $sql)) {
+    echo "Employee data inserted successfully.";
+} else {
+    echo "Error: " . mysqli_error($conn);
+}
+mysqli_close($conn);
+?&gt;
+    </pre>
 
-    // Function to create "Love" text animations
-    function createLove() {
-      const container = document.getElementById('sorryContainer');
-      const love = document.createElement('div');
-      love.className = 'love';
-      love.textContent = 'Love';
-      love.style.left = `${Math.random() * 90}vw`; // Random horizontal position
-      love.style.top = `${Math.random() * 90}vh`; // Random vertical position
-      container.appendChild(love);
+    <h2>Q16</h2>
+    <pre>
+&lt;?php
+$conn = mysqli_connect("localhost", "root", "", "example_db");
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+$sql = "UPDATE emp_master SET salary = 60000 WHERE id = 1";
+if (mysqli_query($conn, $sql)) {
+    echo "Record updated successfully.";
+} else {
+    echo "Error updating record: " . mysqli_error($conn);
+}
+mysqli_close($conn);
+?&gt;
+    </pre>
 
-      // Remove the "Love" after its animation ends
-      setTimeout(() => {
-        love.remove();
-      }, 1000); // Shorter timeout for faster disappearance
-    }
+    <h2>Q17</h2>
+    <pre>
+&lt;?php
+$conn = mysqli_connect("localhost", "root", "", "example_db");
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+$sql = "INSERT INTO emp_master (id, name, salary, department) VALUES (1, 'Jane Doe', 55000, 'HR')";
+if (mysqli_query($conn, $sql)) {
+    echo "Record inserted successfully.";
+} else {
+    echo "Error inserting record: " . mysqli_error($conn);
+}
+mysqli_close($conn);
+?&gt;
+    </pre>
 
-    // Function to create floating hearts
-    function createHeart() {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.style.left = `${Math.random() * 100}vw`; // Random horizontal position
-      heart.style.animationDuration = `${Math.random() * 1.5 + 1.5}s`; // Faster floating duration
-      document.body.appendChild(heart);
+    <h2>Q18</h2>
+    <pre>
+&lt;?php
+$conn = mysqli_connect("localhost", "root", "", "example_db");
+$sql = "SELECT Name, Address, Class, Semester FROM std_info";
+$result = mysqli_query($conn, $sql);
+echo "&lt;table border='1'&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Address&lt;/th&gt;&lt;th&gt;Class&lt;/th&gt;&lt;th&gt;Semester&lt;/th&gt;&lt;/tr&gt;";
+while ($row = mysqli_fetch_assoc($result)) {
+    echo "&lt;tr&gt;&lt;td&gt;{$row['Name']}&lt;/td&gt;&lt;td&gt;{$row['Address']}&lt;/td&gt;&lt;td&gt;{$row['Class']}&lt;/td&gt;&lt;td&gt;{$row['Semester']}&lt;/td&gt;&lt;/tr&gt;";
+}
+echo "&lt;/table&gt;";
+mysqli_close($conn);
+?&gt;
+    </pre>
 
-      // Remove the heart after its animation ends
-      setTimeout(() => {
-        heart.remove();
-      }, 3000);
-    }
-
-    // Create "Sorry" text, "Love" text, and hearts continuously
-    setInterval(createSorry, 200); // New "Sorry" every 200ms
-    setInterval(createLove, 200); // New "Love" every 200ms (faster frequency)
-    setInterval(createHeart, 150); // New heart every 150ms
-  </script>
+    <h2>Q19</h2>
+    <pre>
+Connection.php
+&lt;?php
+// Database connection
+$conn = mysqli_connect("localhost", "root", "", "example_db");
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+echo "Connected successfully";
+?&gt;
+    </pre>
 </body>
 </html>
