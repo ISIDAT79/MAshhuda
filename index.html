@@ -1,133 +1,115 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Index Page</title>
-    <style>
-        pre {
-            background-color: #f4f4f4;
-            padding: 10px;
-            border: 1px solid #ddd;
-            overflow-x: auto;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>Binary Search and Bubble Sort Explanation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            line-height: 1.6;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-left: 4px solid #3498db;
+            overflow-x: auto;
+        }
+    </style>
 </head>
 <body>
-    <h2>Q13</h2>
-    <pre>
-***Page1.php***
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Form Page&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h2&gt;Enter Your Details&lt;/h2&gt;
-    &lt;form action="page2.php" method="POST"&gt;
-        Name: &lt;input type="text" name="name"&gt;&lt;br&gt;&lt;br&gt;
-        Email: &lt;input type="email" name="email"&gt;&lt;br&gt;&lt;br&gt;
-        &lt;button type="submit"&gt;Submit&lt;/button&gt;
-    &lt;/form&gt;
-&lt;/body&gt;
-&lt;/html&gt;
 
-***Page2.php***
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Display Page&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h2&gt;Your Submitted Details&lt;/h2&gt;
-    &lt;?php
-    echo "Name: " . $_POST['name'] . "&lt;br&gt;";
-    echo "Email: " . $_POST['email'] . "&lt;br&gt;";
-    ?&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-    </pre>
+    <h2>Ans 6</h2>
+    <p>Let's perform Binary Search step by step on the sorted list:<br>
+    [10, 12, 20, 32, 50, 55, 65, 80, 99]</p>
+    <p>We are searching for <strong>32</strong>.</p>
+    <pre>
+Initial Values:
+low = 0
+high = 8
+List = [10, 12, 20, 32, 50, 55, 65, 80, 99]
 
-    <h2>Q15</h2>
-    <pre>
-&lt;?php
-$conn = mysqli_connect("localhost", "root", "", "company_db");
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-$id = 1;
-$name = "John Doe";
-$salary = 50000;
-$department = "IT";
-$sql = "INSERT INTO emp_master (id, name, salary, department) VALUES ('$id', '$name', '$salary', '$department')";
-if (mysqli_query($conn, $sql)) {
-    echo "Employee data inserted successfully.";
-} else {
-    echo "Error: " . mysqli_error($conn);
-}
-mysqli_close($conn);
-?&gt;
-    </pre>
+Step 1:
+mid = (0 + 8) // 2 = 4
+list[4] = 50 → 50 > 32
+Update: high = mid - 1 = 3
 
-    <h2>Q16</h2>
-    <pre>
-&lt;?php
-$conn = mysqli_connect("localhost", "root", "", "example_db");
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-$sql = "UPDATE emp_master SET salary = 60000 WHERE id = 1";
-if (mysqli_query($conn, $sql)) {
-    echo "Record updated successfully.";
-} else {
-    echo "Error updating record: " . mysqli_error($conn);
-}
-mysqli_close($conn);
-?&gt;
-    </pre>
+Step 2:
+mid = (0 + 3) // 2 = 1
+list[1] = 12 → 12 < 32
+Update: low = mid + 1 = 2
 
-    <h2>Q17</h2>
-    <pre>
-&lt;?php
-$conn = mysqli_connect("localhost", "root", "", "example_db");
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-$sql = "INSERT INTO emp_master (id, name, salary, department) VALUES (1, 'Jane Doe', 55000, 'HR')";
-if (mysqli_query($conn, $sql)) {
-    echo "Record inserted successfully.";
-} else {
-    echo "Error inserting record: " . mysqli_error($conn);
-}
-mysqli_close($conn);
-?&gt;
-    </pre>
+Step 3:
+mid = (2 + 3) // 2 = 2
+list[2] = 20 → 20 < 32
+Update: low = mid + 1 = 3
 
-    <h2>Q18</h2>
-    <pre>
-&lt;?php
-$conn = mysqli_connect("localhost", "root", "", "example_db");
-$sql = "SELECT Name, Address, Class, Semester FROM std_info";
-$result = mysqli_query($conn, $sql);
-echo "&lt;table border='1'&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Address&lt;/th&gt;&lt;th&gt;Class&lt;/th&gt;&lt;th&gt;Semester&lt;/th&gt;&lt;/tr&gt;";
-while ($row = mysqli_fetch_assoc($result)) {
-    echo "&lt;tr&gt;&lt;td&gt;{$row['Name']}&lt;/td&gt;&lt;td&gt;{$row['Address']}&lt;/td&gt;&lt;td&gt;{$row['Class']}&lt;/td&gt;&lt;td&gt;{$row['Semester']}&lt;/td&gt;&lt;/tr&gt;";
-}
-echo "&lt;/table&gt;";
-mysqli_close($conn);
-?&gt;
-    </pre>
+Step 4:
+mid = (3 + 3) // 2 = 3
+list[3] = 32 → Found!
 
-    <h2>Q19</h2>
-    <pre>
-Connection.php
-&lt;?php
-// Database connection
-$conn = mysqli_connect("localhost", "root", "", "example_db");
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-echo "Connected successfully";
-?&gt;
-    </pre>
+Final Answer: 32 is found at index 3
+    </pre>
+
+    <h2>Ans 9</h2>
+    <p>Bubble Sort Step-by-Step on the list:<br>
+    [42, 23, 74, 11, 65, 58, 94, 36, 99, 87]</p>
+    <pre>
+Bubble Sort Overview:
+Repeatedly compare adjacent elements and swap if out of order.
+
+Initial List:
+[42, 23, 74, 11, 65, 58, 94, 36, 99, 87]
+
+Pass 1:
+[23, 42, 74, 11, 65, 58, 94, 36, 99, 87]
+[23, 42, 11, 74, 65, 58, 94, 36, 99, 87]
+[23, 42, 11, 65, 74, 58, 94, 36, 99, 87]
+[23, 42, 11, 65, 58, 74, 94, 36, 99, 87]
+[23, 42, 11, 65, 58, 74, 36, 94, 99, 87]
+[23, 42, 11, 65, 58, 74, 36, 94, 87, 99]
+
+Pass 2:
+[23, 11, 42, 58, 65, 36, 74, 87, 94, 99]
+
+Pass 3:
+[11, 23, 42, 58, 36, 65, 74, 87, 94, 99]
+
+Pass 4:
+[11, 23, 42, 36, 58, 65, 74, 87, 94, 99]
+
+Pass 5:
+[11, 23, 36, 42, 58, 65, 74, 87, 94, 99]
+
+Pass 6-9:
+No swaps needed
+
+Final Sorted List:
+[11, 23, 36, 42, 58, 65, 74, 87, 94, 99]
+    </pre>
+
+    <h2>Ans 10</h2>
+    <p>Binary Search Algorithm in pseudocode:</p>
+    <pre>
+Algorithm BinarySearch(arr, target)
+Input: arr (sorted array), target (value to find)
+Output: Index of target in arr, or -1 if not found
+
+1. Set low ← 0
+2. Set high ← length(arr) - 1
+3. While low ≤ high do:
+    a. Set mid ← (low + high) // 2
+    b. If arr[mid] == target:
+           Return mid
+    c. Else if arr[mid] < target:
+           Set low ← mid + 1
+    d. Else:
+           Set high ← mid - 1
+4. Return -1  // Target not found
+    </pre>
+
 </body>
 </html>
