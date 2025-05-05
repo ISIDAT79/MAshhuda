@@ -7,64 +7,75 @@
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 20px;
+            background-color: #f9f9f9;
         }
         h2 {
             color: #2a4d69;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
         }
         ul {
             list-style-type: square;
+            margin-left: 20px;
+        }
+        .section {
+            margin-bottom: 30px;
         }
     </style>
 </head>
 <body>
-    <h2>Graph 1</h2>
-    <p><strong>Vertices:</strong> a, b, c, d, e</p>
-    <p><strong>Edges:</strong></p>
-    <ul>
-        <li>ab</li>
-        <li>ac</li>
-        <li>ad</li>
-        <li>bd</li>
-        <li>cd</li>
-        <li>ce</li>
-        <li>de</li>
-    </ul>
-    <p><strong>Total edges:</strong> 7</p>
-    <p><strong>Parallel Edges:</strong> None</p>
-    <p><strong>Loops:</strong> None</p>
-    <p><strong>Degree of Vertices:</strong></p>
-    <ul>
-        <li>deg(a) = 3 (ab, ac, ad)</li>
-        <li>deg(b) = 2 (ab, bd)</li>
-        <li>deg(c) = 3 (ac, cd, ce)</li>
-        <li>deg(d) = 4 (ad, bd, cd, de)</li>
-        <li>deg(e) = 2 (ce, de)</li>
-    </ul>
+    <div class="section">
+        <h2>Graph 1</h2>
+        <p><strong>Vertices:</strong> a, b, c, d, e</p>
+        <p><strong>Edges:</strong></p>
+        <ul>
+            <li>ab</li>
+            <li>ac</li>
+            <li>bc</li>
+            <li>ad</li>
+            <li>cd</li>
+            <li>de</li>
+            <li>ce</li>
+        </ul>
+        <p><strong>Total edges:</strong> 7</p>
+        <p><strong>Parallel Edges:</strong> None (no two edges connect the same pair of vertices)</p>
+        <p><strong>Loops:</strong> None (no edge starts and ends at the same vertex)</p>
+        <p><strong>Degree of Vertices:</strong></p>
+        <ul>
+            <li>deg(a) = 3 (edges ab, ac, ad)</li>
+            <li>deg(b) = 2 (edges ab, bc)</li>
+            <li>deg(c) = 4 (edges ac, bc, cd, ce)</li>
+            <li>deg(d) = 3 (edges ad, cd, de)</li>
+            <li>deg(e) = 2 (edges ce, de)</li>
+        </ul>
+    </div>
 
-    <h2>Graph 2</h2>
-    <p><strong>Vertices:</strong> San Francisco, Los Angeles, Denver, Chicago, Detroit, New York, Washington</p>
-    <p><strong>Edges:</strong></p>
-    <ul>
-        <li>San Francisco – Denver</li>
-        <li>Los Angeles – Denver</li>
-        <li>Denver – Chicago</li>
-        <li>Chicago – Detroit</li>
-        <li>Detroit – New York</li>
-        <li>New York – Washington</li>
-        <li>New York – Chicago</li>
-    </ul>
-    <p><strong>Total edges:</strong> 7</p>
-    <p><strong>Parallel Edges:</strong> None</p>
-    <p><strong>Loops:</strong> None</p>
-    <p><strong>Degree of Vertices:</strong></p>
-    <ul>
-        <li>San Francisco = 1</li>
-        <li>Los Angeles = 1</li>
-        <li>Denver = 3 (San Francisco, Los Angeles, Chicago)</li>
-        <li>Chicago = 3 (Denver, Detroit, New York)</li>
-        <li>Detroit = 2 (Chicago, New York)</li>
-        <li>New York = 3 (Detroit, Washington, Chicago)</li>
-        <li>Washington = 1</li>
-    </ul>
+    <div class="section">
+        <h2>Graph 2</h2>
+        <p><strong>Vertices:</strong> San Francisco, Los Angeles, Denver, Chicago, Detroit, New York, Washington</p>
+        <p><strong>Edges:</strong></p>
+        <ul>
+            <li>San Francisco — Denver</li>
+            <li>Los Angeles — Denver</li>
+            <li>Denver — Chicago</li>
+            <li>Chicago — Detroit</li>
+            <li>Chicago — New York</li>
+            <li>Detroit — New York</li>
+            <li>New York — Washington</li>
+        </ul>
+        <p><strong>Total edges:</strong> 7</p>
+        <p><strong>Parallel Edges:</strong> None (no repeated edges between the same pair of vertices)</p>
+        <p><strong>Loops:</strong> None (no vertex is connected to itself)</p>
+        <p><strong>Degree of Vertices:</strong></p>
+        <ul>
+            <li>San Francisco = 1 (edge to Denver)</li>
+            <li>Los Angeles = 1 (edge to Denver)</li>
+            <li>Denver = 3 (edges to San Francisco, Los Angeles, Chicago)</li>
+            <li>Chicago = 3 (edges to Denver, Detroit, New York)</li>
+            <li>Detroit = 2 (edges to Chicago, New York)</li>
+            <li>New York = 3 (edges to Detroit, Chicago, Washington)</li>
+            <li>Washington = 1 (edge to New York)</li>
+        </ul>
+    </div>
 </body>
 </html>
